@@ -8,14 +8,14 @@ spec:
     - host: arch.homework
       http:
         paths:
-          - path: /courier/add
+          - path: /product/add
             pathType: Prefix
             backend:
               service:
                 name: stock-service
                 port:
                   number: 80
-          - path: /courier/reserve
+          - path: /product/reserve
             pathType: Prefix
             backend:
               service:
