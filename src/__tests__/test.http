@@ -37,3 +37,12 @@ Content-Type: application/json
 {
     "order_id": "abc"
 }
+
+###
+POST http://127.0.0.1:3000/products/reserve
+Content-Type: application/json
+
+{
+    "order_id": "abcd",
+    "completed": true,
+}

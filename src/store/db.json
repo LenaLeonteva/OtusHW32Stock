@@ -1,0 +1,14 @@
+{
+  "ids": {
+    "Product": 2,
+    "ProductReserv": 3
+  },
+  "models": {
+    "Product": {
+      "1": "{\"name\":\"седло\",\"number\":10,\"product_id\":1}"
+    },
+    "ProductReserv": {
+      "abcd": "{\"order_id\":\"abcd\",\"product_id\":1,\"number\":5}"
+    }
+  }
+}
