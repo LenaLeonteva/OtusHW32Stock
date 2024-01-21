@@ -148,11 +148,17 @@ export class OpenApiController {
       return
     } else {
       if (!_requestBody.product_id) return this.response.status(404).send({
-        error: "Error! The product ID is empty"
+        error: "Error! The product ID is empty!"
       });
       const productID = _requestBody.product_id;
       let numProduct = (await this.productRepo.findById(productID)).number;
-      await this.productRepo.updateById(productID, {number: numProduct + (_requestBody.number ?? 0)})
+      const rest = numProduct - (_requestBody.number ?? 0)
+      if (rest < 0) {
+        return this.response.status(400).send({
+          error: "Недостаточно товара на складе!"
+        })
+      }
+      await this.productRepo.updateById(productID, {number: rest})
       const result = await this.reservRepo.create(_requestBody)
       return result
     }
