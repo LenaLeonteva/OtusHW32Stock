@@ -1,12 +1,13 @@
 {
   "ids": {
-    "Product": 3,
+    "Product": 4,
     "ProductReserv": 4
   },
   "models": {
     "Product": {
       "1": "{\"name\":\"рога\",\"number\":40,\"product_id\":1}",
-      "2": "{\"name\":\"копыта\",\"number\":30,\"product_id\":2}"
+      "2": "{\"name\":\"копыта\",\"number\":30,\"product_id\":2}",
+      "3": "{\"name\":\"седло\",\"number\":15,\"product_id\":3}"
     },
     "ProductReserv": {
       "abcde": "{\"order_id\":\"abcde\",\"product_id\":2,\"number\":50}"

@@ -12,11 +12,20 @@ Content-Type: application/json
 }
 
 ###
+POST http://127.0.0.1:3000/products/add
+Content-Type: application/json
+
+{
+  "product_id": 3,
+  "number": 10
+}
+
+###
 POST http://127.0.0.1:3000/products/reserve
 Content-Type: application/json
 
 {
-    "order_id": "abcde",
+    "order_id": "abcd",
     "product_id": 2,
     "number": 50
 }
@@ -26,5 +35,5 @@ DELETE http://127.0.0.1:3000/products/reserve
 Content-Type: application/json
 
 {
-    "order_id": "abcde"
+    "order_id": "abc"
 }
