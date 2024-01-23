@@ -1,9 +1,10 @@
+@host=http://127.0.0.1:3002
 ###
-GET http://127.0.0.1:3000/ping
+GET {{host}}/ping
 
 
 ###
-POST http://127.0.0.1:3000/products/add
+POST {{host}}/products/add
 Content-Type: application/json
 
 {
@@ -12,7 +13,16 @@ Content-Type: application/json
 }
 
 ###
-POST http://127.0.0.1:3000/products/add
+POST {{host}}/products/add
+Content-Type: application/json
+
+{
+  "name": "уздечка",
+  "number": 15
+}
+
+###
+POST {{host}}/products/add
 Content-Type: application/json
 
 {
@@ -21,7 +31,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://127.0.0.1:3000/products/reserve
+POST {{host}}/products/reserve
 Content-Type: application/json
 
 {
@@ -31,7 +41,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://127.0.0.1:3000/products/reserve
+DELETE {{host}}/products/reserve
 Content-Type: application/json
 
 {
@@ -39,7 +49,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://127.0.0.1:3000/products/reserve
+POST {{host}}/products/reserve
 Content-Type: application/json
 
 {

@@ -42,6 +42,7 @@ export class Product extends Entity {
     format: 'int32',
     minimum: 0,
     maximum: 2147483647,
+
   })
   number: number;
 
