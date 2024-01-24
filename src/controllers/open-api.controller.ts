@@ -107,6 +107,45 @@ export class OpenApiController {
       return result
     }
   }
+
+  /**
+  *
+  *
+  * @param _requestBody Created courier
+  */
+  @operation('get', '/products/add', {
+    operationId: 'getProduct',
+    responses: {
+      '200': {
+        description: 'OK',
+      },
+    },
+    requestBody: {
+      content: {
+        'application/json': {
+          schema: {
+            $ref: '#/components/schemas/Product',
+          },
+        },
+      },
+      description: 'Created courier',
+      required: true,
+    },
+  })
+  async getProduct(@requestBody({
+    content: {
+      'application/json': {
+        schema: {
+          $ref: '#/components/schemas/Product',
+        },
+      },
+    },
+    description: 'get product',
+    required: true,
+  }) _requestBody: Product): Promise<Product | undefined> {
+    let result = await this.productRepo.findById(_requestBody.product_id);
+    return result;
+  }
   /**
    *
    *
@@ -205,6 +244,45 @@ export class OpenApiController {
     await this.productRepo.updateById(productID, {number: prodNum + (reserved.number ?? 0)});
     await this.reservRepo.deleteById(orderID);
     return
+  }
+
+  /**
+   *
+   *
+   * @param _requestBody Created reserve product
+   */
+  @operation('get', '/products/reserve', {
+    operationId: 'getReserve',
+    responses: {
+      '200': {
+        description: 'OK',
+      },
+    },
+    requestBody: {
+      content: {
+        'application/json': {
+          schema: {
+            $ref: '#/components/schemas/ProductReserv',
+          },
+        },
+      },
+      description: 'Created reserve product',
+      required: true,
+    },
+  })
+  async getReserve(@requestBody({
+    content: {
+      'application/json': {
+        schema: {
+          $ref: '#/components/schemas/ProductReserv',
+        },
+      },
+    },
+    description: 'Created reserve product',
+    required: true,
+  }) _requestBody: ProductReserv): Promise<ProductReserv> {
+    let result = await this.reservRepo.findById(_requestBody.order_id);
+    return result
   }
 }
 

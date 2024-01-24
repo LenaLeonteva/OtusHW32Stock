@@ -16,7 +16,19 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Product"
-        description: Created courier
+        description: Created product
+        required: true
+    get:
+      operationId: getProduct
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+        description: GET product
         required: true
   /products/reserve:
     post:
@@ -42,6 +54,18 @@ paths:
             schema:
               $ref: "#/components/schemas/ProductReserv"
         description: Created reserve product
+        required: true
+    get:
+      operationId: getReserve
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductReserv"
+        description: GET reserve product
         required: true
 components:
   schemas:

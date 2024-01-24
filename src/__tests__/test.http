@@ -13,6 +13,14 @@ Content-Type: application/json
 }
 
 ###
+GET {{host}}/products/add
+Content-Type: application/json
+
+{
+  "product_id": 2
+}
+
+###
 POST {{host}}/products/add
 Content-Type: application/json
 
@@ -38,6 +46,14 @@ Content-Type: application/json
     "order_id": "abcd",
     "product_id": 1,
     "number": 5
+}
+
+###
+GET {{host}}/products/reserve
+Content-Type: application/json
+
+{
+    "order_id": "a9dcd83b-2d4c-43e8-888b-ad8c73ae4989"
 }
 
 ###
