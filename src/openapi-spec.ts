@@ -1,5 +1,6 @@
 import {ApplicationConfig} from '@loopback/core';
 import {StockApplication} from './application';
+import { CONFIG } from './config';
 
 /**
  * Export the OpenAPI spec from the application
@@ -7,7 +8,7 @@ import {StockApplication} from './application';
 async function exportOpenApiSpec(): Promise<void> {
   const config: ApplicationConfig = {
     rest: {
-      port: +(process.env.PORT ?? 3000),
+      port: +(process.env.PORT ?? CONFIG.port),
       host: process.env.HOST ?? 'localhost',
     },
   };
