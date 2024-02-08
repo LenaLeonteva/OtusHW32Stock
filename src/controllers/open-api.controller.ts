@@ -1,6 +1,6 @@
 import {inject} from '@loopback/core';
 import {repository} from '@loopback/repository';
-import {Response, RestBindings, api, operation, requestBody} from '@loopback/rest';
+import {Response, RestBindings, api, operation, param, requestBody} from '@loopback/rest';
 import {ProductReserv} from '../models/product-reserv.model';
 import {Product} from '../models/product.model';
 import {ProductRepository, ProductReservRepository} from '../repositories';
@@ -113,37 +113,35 @@ export class OpenApiController {
   *
   * @param _requestBody Created courier
   */
-  @operation('get', '/products/add', {
+  @operation('get', '/products/{productId}', {
     operationId: 'getProduct',
     responses: {
       '200': {
         description: 'OK',
       },
     },
-    requestBody: {
-      content: {
-        'application/json': {
-          schema: {
-            $ref: '#/components/schemas/Product',
-          },
-        },
-      },
-      description: 'Created courier',
-      required: true,
-    },
-  })
-  async getProduct(@requestBody({
-    content: {
-      'application/json': {
+    parameters: [
+      {
+        name: 'productId',
+        in: 'path',
+        description: 'ID of order',
+        required: true,
         schema: {
-          $ref: '#/components/schemas/Product',
+          type: 'number',
         },
       },
-    },
-    description: 'get product',
+    ],
+  })
+  async getProduct(@param({
+    name: 'productId',
+    in: 'path',
+    description: 'ID of product',
     required: true,
-  }) _requestBody: Product): Promise<Product | undefined> {
-    let result = await this.productRepo.findById(_requestBody.product_id);
+    schema: {
+      type: 'number',
+    },
+  }) productId: number): Promise<Product> {
+    let result = await this.productRepo.findById(productId);
     return result;
   }
   /**
